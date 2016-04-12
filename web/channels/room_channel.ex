@@ -1,7 +1,7 @@
 defmodule Chat.RoomChannel do
   use Phoenix.Channel
   require Logger
-
+  alias Timex.DateTime, as: DateTime
   @doc """
   Authorize socket to subscribe and broadcast events on this channel & topic
 
@@ -30,7 +30,8 @@ defmodule Chat.RoomChannel do
     {:noreply, socket}
   end
   def handle_info(:ping, socket) do
-    push socket, "new:msg", %{user: "SYSTEM", body: "ping"}
+    time = Timex.format(DateTime.now,"%Y-%m-%d %I:%M:%S:%f", :strftime) |> (fn { _ , str } -> str end).()
+    push socket, "new:msg", %{user: "SYSTEM(#{time})", body: "ping"}
     {:noreply, socket}
   end
 
