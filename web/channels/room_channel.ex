@@ -31,7 +31,7 @@ defmodule Chat.RoomChannel do
   end
   def handle_info(:ping, socket) do
     time = Timex.format(DateTime.now,"%Y-%m-%d %I:%M:%S:%f", :strftime) |> (fn { _ , str } -> str end).()
-    push socket, "new:msg", %{user: "SYSTEM(#{time})", body: "ping"}
+    push socket, "new:msg", %{user: "SYSTEM(#{time})", body: "pong"}
     {:noreply, socket}
   end
 

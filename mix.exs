@@ -3,7 +3,7 @@ defmodule Chat.Mixfile do
 
   def project do
     [app: :chat,
-     version: "0.0.22",
+     version: "0.0.3",
      elixir: "~> 1.0",
      elixirc_paths: ["lib", "web"],
      compilers: [:phoenix] ++ Mix.compilers,
